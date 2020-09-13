@@ -45,6 +45,7 @@ public class ClientHandler {
                                     sendMsg("/authok " + nickname);
                                     server.subscribe(this);
                                     System.out.println("Клиент " + nickname + " подключился");
+                                    socket.setSoTimeout (0);
                                     break;
                                 } else {
                                     sendMsg("С данной учетной записью уже зашли");
@@ -73,7 +74,7 @@ public class ClientHandler {
 
                     //цикл работы
                     while (true) {
-                        socket.setSoTimeout (0);
+                        //socket.setSoTimeout (0);
                         String str = in.readUTF();
 
                         if (str.startsWith("/")) {
